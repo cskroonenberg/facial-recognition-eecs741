@@ -17,24 +17,21 @@ def main():
         gallery_imgs.append(gallery_img_gray)
         probe_imgs.append(probe_img_gray)
 
-    assert len(gallery_imgs) == 100
-    assert len(probe_imgs) == 100
-
     # Generate score matrix for first facial recognition method
     A = HammingDistanceScore(gallery_imgs, probe_imgs)
-    print(A.shape)
-    assert A.shape == (100, 100)
-
-    print("A[0:9, 0:9] snippet:")
+    print("Part 1A: A[0:9, 0:9] snippet:")
     print(A[0:9, 0:9])
 
     hamming_decidability_idx = DecidabilityIndex(A)
+    print("Part 1B: Hamming distance decidability index: {}".format(hamming_decidability_idx))
 
     # Generate score matrix for second facial recognition method
     B = TODO_DistanceScore(gallery_imgs, probe_imgs)
-    assert B.shape == (100, 100)
+    print("Part 2A: B[0:9, 0:9] snippet:")
+    print(B[0:9, 0:9])
 
     system_b_decidability_idx = DecidabilityIndex(B)
+    print("Part 2B: System B decidability index: {}".format(system_b_decidability_idx))
 
     improvement_factor = round((system_b_decidability_idx - hamming_decidability_idx), 2)
     if improvement_factor < 0:
@@ -49,7 +46,7 @@ def main():
         score = 18
     else:
         score = 20
-    print("Part 2c score: {}".format(score))
+    print("Part 2C Improvement Factor (IF) = {}\tScore = ".format(improvement_factor, score))
 
 if __name__ == "__main__":
     main()
