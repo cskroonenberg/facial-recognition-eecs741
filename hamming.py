@@ -20,7 +20,3 @@ def HammingDistanceScoreMatrix(gallery_imgs, probe_imgs):
             A[i, j] = HammingDistance(probe_imgs[i], gallery_imgs[j])
     
     return A
-
-def HammingDecidability(score_matrix):
-    # TODO: Calculate deicidability
-    raise NotImplementedError 
