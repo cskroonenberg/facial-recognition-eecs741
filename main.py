@@ -1,11 +1,27 @@
 import cv2
+import math
 import numpy as np
 from hamming import HammingDistanceScore
 from system_b import TODO_DistanceScore
 
 def DecidabilityIndex(score_matrix):
-    # TODO: Calculate decidability index
-    raise NotImplementedError
+    genuine_scores = np.array([])
+    imposter_scores = np.array([])
+    for i in range(100):
+        genuine_scores = np.append(genuine_scores, score_matrix[i, i])
+        imposter_scores = np.append(imposter_scores, score_matrix[i, :i])
+        imposter_scores = np.append(imposter_scores, score_matrix[i, (i+1):])
+
+    genuine_mean = np.mean(genuine_scores)
+    imposter_mean = np.mean(imposter_scores)
+
+    genuine_std_dev = np.std(genuine_scores)
+    imposter_std_dev = np.std(imposter_scores)
+
+    num = math.sqrt(2)*abs(genuine_mean - imposter_mean)
+    denom = math.sqrt(math.pow(genuine_std_dev, 2) + math.pow(imposter_std_dev, 2))
+
+    return num/denom
 
 def main():
     # Read in images
