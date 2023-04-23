@@ -34,7 +34,7 @@ def main():
         probe_imgs.append(probe_img_gray)
 
     # Generate score matrix for first facial recognition method
-    A = HammingDistanceScoreMatrix(gallery_imgs, probe_imgs)
+    A = HammingDistanceScoreMatrix(gallery_imgs.copy(), probe_imgs.copy())
     print("Part 1A: A[0:9, 0:9] snippet:")
     print(A[0:9, 0:9])
 
