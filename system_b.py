@@ -33,17 +33,8 @@ def HammingDistance(img_a, img_b):
     # COMPLETE(Javante): calculate hamming distance
     return len((img_a != img_b).nonzero()[0])
 
-def TODO_DistanceScore(gallery_imgs, probe_imgs):
-    # Convert images to binary
-    # for i, img in enumerate(gallery_imgs):
-    #     _, gallery_imgs[i] = cv2.threshold(img,128,255,cv2.THRESH_BINARY)
-    # for i, img in enumerate(probe_imgs):
-    #     _, probe_imgs[i] = cv2.threshold(img,128,255,cv2.THRESH_BINARY)
-
-    # TODO: Check that the above binarization sets pixel values to 1 and 0 (instead of 255 and 0)
-
-    #LBP Pre-processing
-    for k, img in enumerate(gallery_imgs):
+def LBP_Preprocess(img_set):
+    for k, img in enumerate(img_set):
          img_length = len(img) - 2
          img_width = len(img[0]) - 2
          lbp_img = np.zeros((img_length, img_width))
@@ -58,24 +49,13 @@ def TODO_DistanceScore(gallery_imgs, probe_imgs):
                          bit_value += bit if img[z+i][t+j] >= center_value else 0
                          bit *= 2
                  img[center[0]][center[1]] = bit_value
-         gallery_imgs[k] = img
+         img_set[k] = img
+    return img_set
 
-    for k, img in enumerate(probe_imgs):
-        img_length = len(img) - 2
-        img_width = len(img[0]) - 2
-        lbp_img = np.zeros((img_length, img_width))
-        for i in range(1, img_length):
-            for j in range(1, img_width):
-                center = (i+1, j+1)
-                center_value = img[center[0]][center[1]]
-                bit = 1
-                bit_value = 0
-                for z in range(3):
-                    for t in range(3):
-                        bit_value += bit if img[z+i][t+j] >= center_value else 0
-                        bit *= 2
-                img[center[0]][center[1]] = bit_value
-        probe_imgs[k] = img
+def TODO_DistanceScore(gallery_imgs, probe_imgs): 
+    #LBP Pre-processing
+    gallery_imgs = LBP_Preprocess(gallery_imgs)
+    probe_imgs = LBP_Preprocess(probe_imgs)
 
     #Apply more pre-processing and binarize image
     sigma = 0.2
