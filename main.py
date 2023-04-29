@@ -42,7 +42,7 @@ def main():
     print("Part 1B: Hamming distance decidability index: {}".format(hamming_decidability_idx))
 
     # Generate score matrix for second facial recognition method
-    B = TODO_DistanceScore(gallery_imgs, probe_imgs)
+    B = TODO_DistanceScore(gallery_imgs.copy(), probe_imgs.copy())
     print("Part 2A: B[0:9, 0:9] snippet:")
     print(B[0:9, 0:9])
 
