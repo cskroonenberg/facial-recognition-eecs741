@@ -1,8 +1,21 @@
 import cv2
 import math
 import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+from  matplotlib.colors import LinearSegmentedColormap
 from hamming import HammingDistanceScoreMatrix
 from system_b import TODO_DistanceScore
+
+def plot_matrix(score_matrix):
+    cmap=LinearSegmentedColormap.from_list('rg',["darkgreen","green" , "palegreen", "w","lightcoral", "red", "darkred"], N=256) 
+
+    plt.xlabel("Probe")
+    plt.ylabel("Gallery")
+    plt.title("System_A Gallery and Probe Sets")
+    plt.imshow(score_matrix, interpolation='none', cmap=cmap)
+    plt.colorbar()
+    plt.show()
 
 def DecidabilityIndex(score_matrix):
     genuine_scores = np.array([])
@@ -37,6 +50,8 @@ def main():
     A = HammingDistanceScoreMatrix(gallery_imgs.copy(), probe_imgs.copy())
     print("Part 1A: A[0:9, 0:9] snippet:")
     print(A[0:9, 0:9])
+    plot_matrix(A)
+    plot_matrix(A[0:9, 0:9])
 
     hamming_decidability_idx = DecidabilityIndex(A)
     print("Part 1B: Hamming distance decidability index: {}".format(hamming_decidability_idx))
