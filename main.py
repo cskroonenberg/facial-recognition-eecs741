@@ -63,7 +63,7 @@ def main():
         score = 18
     else:
         score = 20
-    print("Part 2C Improvement Factor (IF) = {}\tScore = ".format(improvement_factor, score))
+    print("Part 2C Improvement Factor (IF) = {}\tScore = {}".format(improvement_factor, score))
 
 if __name__ == "__main__":
     main()
