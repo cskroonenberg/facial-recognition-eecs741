@@ -1,8 +1,8 @@
 import cv2
 import math
 import numpy as np
-from hamming import HammingDistanceScoreMatrix
-from system_b import SystemBScoreMatrix
+from system_a import System_A_Score_Matrix
+from system_b import System_B_Score_Matrix
 from plot_matrix import plot_matrix
 
 def DecidabilityIndex(score_matrix):
@@ -35,17 +35,23 @@ def main():
         probe_imgs.append(probe_img_gray)
 
     # Generate score matrix for first facial recognition method
-    A = HammingDistanceScoreMatrix(gallery_imgs.copy(), probe_imgs.copy())
+    A = System_A_Score_Matrix(gallery_imgs.copy(), probe_imgs.copy())
     print("Part 1A: A[0:9, 0:9] snippet:")
     print(A[0:9, 0:9])
+
+    #plot_matrix(A)
+    #plot_matrix(A[0:9, 0:9])
 
     hamming_decidability_idx = DecidabilityIndex(A)
     print("Part 1B: Hamming distance decidability index: {}".format(hamming_decidability_idx))
 
     # Generate score matrix for second facial recognition method
-    B = SystemBScoreMatrix(gallery_imgs.copy(), probe_imgs.copy())
+    B = System_B_Score_Matrix(gallery_imgs.copy(), probe_imgs.copy())
     print("Part 2A: B[0:9, 0:9] snippet:")
     print(B[0:9, 0:9])
+
+    #plot_matrix(B)
+    #plot_matrix(B[0:9, 0:9])
 
     system_b_decidability_idx = DecidabilityIndex(B)
     print("Part 2B: System B decidability index: {}".format(system_b_decidability_idx))
