@@ -2,10 +2,11 @@ import numpy as np
 
 def EuclideanDistance(img_a, img_b):
     # TODO: Calculate distance between images using some distance function
-    #COMPLETE(Michael): Calculate total Euclidean distance
+    #COMPLETE(Caden): Calculate total Euclidean distance
     distance = 0
-    for i in range(len(img_a)):
-        distance += np.sqrt(np.sum((img_a[i]-img_b[i])**2))
+    diff_arr = np.logical_xor(img_a, img_b)
+    distance = diff_arr.sum()
+    distance = distance**0.5
     return distance
 
 def HammingDistance(img_a, img_b):
