@@ -7,7 +7,7 @@ The goal is to create a system which processes the images in a way that  distanc
 System performance is calculated based on the Decidability Index value, given by the following formula, defined in ```main.py``` as ```DecidabilityIndex(score_matrix)```:
 
 <figure>
-<img src=doc/decidabilityIndex.png>
+<img src=doc/decidabilityIndex.png width="25%">
 </figure>
 
 In this formula, ${\mu}_1$ and ${\mu}_2$ are the mean of the genuine and imposter score distribution respectively. Similarly, ${\sigma}_2$ and ${\sigma}_2$ denote the standard deviation of the genuine and impostor distribution respectively. Genuine scores are the distance scores of images with the same individual while imposter scores are the distance scores of images with different individuals.
@@ -21,16 +21,16 @@ System A applies threshold binarization using ```cv2.threshold(img,128,1,cv2.THR
 Gallery and probe images of the individual after threshold binarization:
 
 <figure>
-<img src=doc/sysA_binarized_gallery.png width="45%" height="45%">
-<img src=doc/sysA_binarized_probe.png width="45%" height="45%">
+<img src=doc/sysA_binarized_gallery.png width=200px heigh=200px>
+<img src=doc/sysA_binarized_probe.png width=200px heigh=200px>
 </figure><br>
 
 #### Results
 System A yielded a Decidability Index value of ~2.9104. The score matrices are plotted below. Note that the scores of images with matching individuals are lower than the scores of images with different individuals.
 <figure>
-<img src=doc/System_A_full.png width="100%" height="100%">
+<img src=doc/System_A_full.png width=50% height=50%>
 <br>
-<img src=doc/System_A_snippet.png width="100%" height="100%">
+<img src=doc/System_A_snippet.png width=50% height=50%>
 </figure><br>
 
 ## System B
@@ -39,20 +39,20 @@ System B applies two pre-processing measures, ```cv2.filter2D``` and ```cv2.Gaus
 
 Gallery and probe images of the individual after pre-processing:
 <figure>
-<img src=doc/sysB_modified_gallery.png width="45%" height="45%">
-<img src=doc/sysB_modified_probe.png width="45%" height="45%">
+<img src=doc/sysB_modified_gallery.png width=200px heigh=200px>
+<img src=doc/sysB_modified_probe.png width=200px heigh=200px>
 </figure><br>
 
 Gallery and probe images of the individual after threshold binarization:
 <figure>
-<img src=doc/sysB_binarized_gallery.png width="45%" height="45%">
-<img src=doc/sysB_binarized_probe.png width="45%" height="45%">
+<img src=doc/sysB_binarized_gallery.png width=200px heigh=200px>
+<img src=doc/sysB_binarized_probe.png width=200px heigh=200px>
 </figure><br>
 
 #### Results
 System B yielded a Decidability Index value of ~3.859. The score matrices are plotted below. Similar to System A, scores of images with matching individuals are lower than the scores of images with different individuals. However, note the consistency with which System B distinguishes between different individuals (hence the improved Decidability Index).
 <figure>
-<img src=doc/System_B_full.png width="100%" height="100%">
+<img src=doc/System_B_full.png width=50% height=50%>
 <br>
-<img src=doc/System_B_snippet.png width="100%" height="100%">
+<img src=doc/System_B_snippet.png width=50% height=50%>
 </figure><br>
