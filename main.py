@@ -3,6 +3,7 @@ import math
 import numpy as np
 from hamming import HammingDistanceScoreMatrix
 from system_b import TODO_DistanceScore
+from plot_matrix import plot_matrix
 
 def DecidabilityIndex(score_matrix):
     genuine_scores = np.array([])
